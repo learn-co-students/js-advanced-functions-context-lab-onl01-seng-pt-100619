@@ -40,7 +40,7 @@ let createTimeOutEvent = function(timeOut){
     return this;
 }
 
-let hoursWorkedOnDate = function(date){
+let hoursWorkedOnDate = function(date){ // find clockin/out data on a specific day given an employee and the day extract the hours data and find hours worked
     let inRecord = this.timeInEvents.find(timeInEvent => timeInEvent.date === date) // we access the timein array of events
     let outRecord = this.timeOutEvents.find(timeOutEvent => timeOutEvent.date === date)// find the clock record for that day
     let hoursForDay =  (outRecord.hour - inRecord.hour) / 100
