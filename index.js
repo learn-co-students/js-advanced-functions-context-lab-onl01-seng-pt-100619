@@ -20,7 +20,7 @@ let createEmployeeRecords = function(records){ // iterate over an array of emplo
     return results;
 }
 
-let createTimeInEvent = function(timeIn){
+let createTimeInEvent = function(timeIn){ // access the array of objects for clock ins/out and update the arguments with given date
     this.timeInEvents.push(
     {
         type: "TimeIn",
