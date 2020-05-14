@@ -1,7 +1,7 @@
 /* Your Code Here */
 
 
-let createEmployeeRecord = function(a){
+let createEmployeeRecord = function(a){ // set object to a variable and return it
     let employeeObject = {
         firstName: a[0],
         familyName: a[1],
