@@ -14,7 +14,7 @@ let createEmployeeRecord = function(a){ // set object to a variable and return i
     return employeeObject;
 }
 
-let createEmployeeRecords = function(records){
+let createEmployeeRecords = function(records){ // iterate over an array of employee arrays and create a record/object for each
     let results = []
     records.map(function(record){results.push(createEmployeeRecord(record))})
     return results;
