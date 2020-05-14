@@ -47,7 +47,7 @@ let hoursWorkedOnDate = function(date){ // find clockin/out data on a specific d
     return hoursForDay;
 }
 
-let wagesEarnedOnDate = function(date){
+let wagesEarnedOnDate = function(date){ // access given employee's payperhour and multiply by hours worked
     return hoursWorkedOnDate.call(this, date) * this.payPerHour
 }
 
