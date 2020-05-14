@@ -100,10 +100,10 @@ let allWagesFor = function () {
         return e.date
     })
 
-    let payable = eligibleDates.reduce(function (memo, d) {
+    let payable = eligibleDates.reduce(function (memo, d) { // run a reduce on work days of worker start on 0 bc dates start with a date, use each date to call wages per day function
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
-
+    
     return payable
 }
 
