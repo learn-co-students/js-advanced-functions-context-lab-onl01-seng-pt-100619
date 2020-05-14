@@ -74,7 +74,7 @@ let payrollExpense = function(records){ // find allwages for each employee given
 
  }
 
- let findEmployeeByFirstName = function(records, name){
+ let findEmployeeByFirstName = function(records, name){ // iterate over records of employees and access each employees object first name property to match given name
     let employee = records.find(record => record.firstName === name) 
     return employee; // find using the arroy syntax for the first name in the array of employee objects
  }
