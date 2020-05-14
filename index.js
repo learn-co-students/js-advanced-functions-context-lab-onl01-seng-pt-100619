@@ -52,7 +52,7 @@ let wagesEarnedOnDate = function(date){ // access given employee's payperhour an
 }
 
 
-let payrollExpense = function(records){
+let payrollExpense = function(records){ // find allwages for each employee given and add those wages
     let wagesArr = [] // first make an array with all wages for each employee
 
     records.map(function(record){wagesArr.push(allWagesFor.call(record))}) // find each employee wages thourgh map
