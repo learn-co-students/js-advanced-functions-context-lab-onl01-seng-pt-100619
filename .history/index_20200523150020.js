@@ -39,38 +39,40 @@ function createEmployeeRecord([firstName, familyName, title, payPerHour]) {
 }
 
 
-function createTimeInEvent(dateStamp){
+function createTimeInEvent(employeeRecord, dateStamp){
     // create and object
     let [date, hour] = dateStamp.split(' ')
-
-    this.timeInEvents.push({
-        type: "TimeIn",
+    const clockIn = {
+    type: "TimeIn",
     hour: parseInt(hour, 10),
-    date, 
-    })
-    return this 
+    date,
+    }
+    debugger
+    //add the object to timeInEvents
+    employeeRecord.timeInEvents.push(clockIn)
+    return employeeRecord
+
 }
 
 
-function createTimeOutEvent(dateStamp){
+function createTimeOutEvent(employeeRecord, dateStamp){
     // create and object
     let [date, hour] = dateStamp.split(' ')
-    debugger
-    this.timeOutEvents.push({
-
+    const clockOut = {
     type: "TimeOut",
     hour: parseInt(hour, 10),
     date
-    })
-    
-    return this 
+    }
+    //add the object to timeOutEvents
+    employeeRecord.timeOutEvents.push(clockOut)
+    return employeeRecord
 }
 
-function hoursWorkedOnDate(date){
-    const TimeIn = this.timeInEvents.find(function(TimeIn){
+function hoursWorkedOnDate(employeeRecord, date){
+    const TimeIn = employeeRecord.timeInEvents.find(function(TimeIn){
        return TimeIn.date === date
     })
-    const timeOut = this.timeOutEvents.find(function(timeOut){
+    const timeOut = employeeRecord.timeOutEvents.find(function(timeOut){
         return timeOut.date === date 
      })
 
@@ -79,13 +81,25 @@ function hoursWorkedOnDate(date){
    return hoursWorked
 }
 
-function wagesEarnedOnDate(date){
-    let wage = hoursWorkedOnDate.call(this, date) * this.payPerHour
-    
-    return parseFloat(wage.toString())
+function wagesEarnedOnDate(employeeRecord, date){
+    return hoursWorkedOnDate(employeeRecord, date) * employeeRecord.payPerHour
 
 }
 
+function allWagesFor(employeeRecord){
+    // find the available date 
+    const dates = employeeRecord.timeInEvents.map(function(event){
+       return event.date
+    })
+    
+   let total = 0 
+
+   dates.map(function(date){
+    total += wagesEarnedOnDate(employeeRecord, date)       
+   })
+    
+   return total 
+}
 
 function findEmployeeByFirstName(srcArray, firstName){
     return srcArray.find(function(employee){
@@ -96,7 +110,7 @@ function findEmployeeByFirstName(srcArray, firstName){
 
 function calculatePayroll(employeeRecords){ 
     return employeeRecords.reduce(function(accumulator, employee){
-       return accumulator + allWagesFor.call(employee)
+       return accumulator + allWagesFor(employee)
     }, 0)
 
 }

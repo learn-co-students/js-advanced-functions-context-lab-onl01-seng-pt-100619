@@ -80,9 +80,13 @@ function hoursWorkedOnDate(date){
 }
 
 function wagesEarnedOnDate(date){
-    let wage = hoursWorkedOnDate.call(this, date) * this.payPerHour
-    
-    return parseFloat(wage.toString())
+    const TimeIn = this.timeInEvents.find(function(TimeIn){
+        return TimeIn.date === date
+     })
+     const timeOut = this.timeOutEvents.find(function(timeOut){
+         return timeOut.date === date 
+      })
+    return hoursWorkedOnDate(date) * this.payPerHour
 
 }
 
@@ -96,7 +100,7 @@ function findEmployeeByFirstName(srcArray, firstName){
 
 function calculatePayroll(employeeRecords){ 
     return employeeRecords.reduce(function(accumulator, employee){
-       return accumulator + allWagesFor.call(employee)
+       return accumulator + allWagesFor(employee)
     }, 0)
 
 }

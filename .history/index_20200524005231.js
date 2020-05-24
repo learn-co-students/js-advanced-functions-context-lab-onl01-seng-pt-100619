@@ -96,7 +96,7 @@ function findEmployeeByFirstName(srcArray, firstName){
 
 function calculatePayroll(employeeRecords){ 
     return employeeRecords.reduce(function(accumulator, employee){
-       return accumulator + allWagesFor.call(employee)
+       return accumulator + allWagesFor(employee)
     }, 0)
 
 }
